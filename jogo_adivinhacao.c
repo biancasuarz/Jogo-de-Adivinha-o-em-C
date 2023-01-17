@@ -2,37 +2,50 @@
 
 int main() {
 
-	 //imprime cabeçalho do nosso jogo
-	 printf("***************************************\n");
-	 printf ("Bem vindo ao nosso jogo de adivinhação\n");
-	 printf("***************************************\n");
- 	
-	 int numeroSecreto = 42;
+    // imprime cabecalho do nosso jogo
+    printf("******************************************\n");
+    printf("* Bem vindo ao nosso jogo de adivinhação *\n");
+    printf("******************************************\n");
 
-	 int chute;
+    int numerosecreto = 42;
 
-	 printf("qual é o seu chute?");
-	 scanf("%d", &chute);
-	 printf("seu chute foi %d, chute");
+    int chute;
+    int tentativas = 1;
 
-	 int acertou = (chute == numeroSecreto);
+    while(1) {
 
-	 if (acertou){
-	 printf("Parabéns! Você acertou!\n");
-	 printf("Jogue de novo, você é um bom jogador!\n");
-	 }
+        printf("Tentativa %d\n", tentativas);
+        printf("Qual é o seu chute? ");
 
-	int maior = chute > numeroSecreto;
-	else {
-		if(maior){
-			printf("Seu chute foi maior que o número secreto\n");
-		}
+        scanf("%d", &chute);
+        printf("Seu chute foi %d\n", chute);
 
-		if (chute < numeroSecreto){
-			printf("Seu chute foi menor que o número secreto\n");
-		}
+        if(chute < 0) {
+            printf("Você não pode chutar números negativos!\n");
+            continue;
+        }
 
+        int acertou = (chute == numerosecreto);
+        int maior = chute > numerosecreto;
 
-	}
+        if(acertou) {
+            printf("Parabéns! Você acertou!\n");
+            printf("Jogue de novo, você é um bom jogador!\n");
+
+            break;
+        }
+
+        else if(maior) {
+            printf("Seu chute foi maior que o número secreto\n");
+        } 
+
+        else {
+            printf("Seu chute foi menor que o número secreto\n");
+        }
+
+        tentativas++;
+    }
+
+    printf("Fim de jogo!\n");
+    printf("Você acertou em %d tentativas!", tentativas);
 }
-
